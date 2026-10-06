@@ -1,13 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Onair.David | Laufveranstaltungs-Moderator</title>
+    <title>Onair.David | Moderation & Running</title>
 
     <meta name="description"
-          content="Onair.David – David moderiert Laufveranstaltungen mit Leidenschaft.">
+          content="Onair.David – David moderiert Laufveranstaltungen mit Leidenschaft, Energie und Stimme.">
 
     <style>
         * {
@@ -22,9 +23,9 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #08090d;
+            background: #07080b;
             color: white;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* NAVIGATION */
@@ -32,6 +33,7 @@
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             z-index: 1000;
 
@@ -39,16 +41,16 @@
             justify-content: space-between;
             align-items: center;
 
-            padding: 20px 7%;
+            padding: 22px 7%;
 
-            background: rgba(8, 9, 13, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(7, 8, 11, 0.78);
+            backdrop-filter: blur(18px);
 
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 25px;
             font-weight: 900;
             letter-spacing: -1px;
         }
@@ -61,13 +63,15 @@
             color: white;
             text-decoration: none;
             margin-left: 30px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight: 700;
             transition: 0.3s;
         }
 
         nav a:hover {
             color: #ff4d00;
         }
+
 
         /* HERO */
 
@@ -78,42 +82,81 @@
             align-items: center;
             justify-content: space-between;
 
-            padding: 140px 8% 80px;
+            padding: 150px 8% 90px;
+
+            position: relative;
+            overflow: hidden;
 
             background:
-                radial-gradient(circle at 80% 30%, rgba(255,77,0,0.18), transparent 35%),
-                radial-gradient(circle at 10% 80%, rgba(255,77,0,0.08), transparent 30%);
+                radial-gradient(
+                    circle at 80% 40%,
+                    rgba(255, 77, 0, 0.20),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(255, 77, 0, 0.08),
+                    transparent 30%
+                );
+        }
+
+        .hero::before {
+            content: "ONAIR";
+
+            position: absolute;
+            right: -50px;
+            bottom: -80px;
+
+            font-size: 25vw;
+            font-weight: 900;
+
+            color: rgba(255,255,255,0.025);
+
+            pointer-events: none;
         }
 
         .hero-text {
-            max-width: 700px;
+            max-width: 720px;
+            z-index: 2;
         }
 
         .eyebrow {
             color: #ff4d00;
             font-weight: 900;
-            text-transform: uppercase;
             letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 13px;
             margin-bottom: 20px;
         }
 
         h1 {
-            font-size: clamp(55px, 9vw, 120px);
-            line-height: 0.9;
-            letter-spacing: -6px;
-            margin-bottom: 30px;
+            font-size: clamp(60px, 10vw, 130px);
+            line-height: 0.85;
+            letter-spacing: -7px;
+            margin-bottom: 35px;
         }
 
         h1 span {
             color: #ff4d00;
         }
 
-        .hero p {
-            font-size: 21px;
-            color: #b8b8bd;
-            max-width: 600px;
+        .hero-text > p {
+            max-width: 650px;
+
+            color: #b8bac0;
+
+            font-size: 20px;
+            line-height: 1.7;
+
             margin-bottom: 35px;
         }
+
+        .hero-text strong {
+            color: white;
+        }
+
+
+        /* BUTTONS */
 
         .buttons {
             display: flex;
@@ -123,10 +166,14 @@
 
         .button {
             display: inline-block;
+
             padding: 15px 25px;
+
             border-radius: 50px;
+
             text-decoration: none;
             font-weight: 900;
+
             transition: 0.3s;
         }
 
@@ -137,50 +184,75 @@
 
         .primary:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(255,77,0,0.3);
+            box-shadow: 0 15px 35px rgba(255,77,0,0.30);
         }
 
         .secondary {
-            border: 1px solid #444;
             color: white;
+            border: 1px solid #3a3c42;
         }
 
         .secondary:hover {
             border-color: #ff4d00;
             color: #ff4d00;
+            transform: translateY(-4px);
         }
+
 
         /* PROFILBILD */
 
         .profile-container {
             position: relative;
-            margin-left: 50px;
+            z-index: 2;
+            margin-left: 60px;
+        }
+
+        .profile-ring {
+            width: 370px;
+            height: 370px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #ff4d00,
+                #ff8a00
+            );
+
+            box-shadow:
+                0 0 0 15px rgba(255,77,0,0.07),
+                0 30px 100px rgba(0,0,0,0.6);
         }
 
         .profile {
-            width: 330px;
-            height: 330px;
+            width: 350px;
+            height: 350px;
+
             object-fit: cover;
 
             border-radius: 50%;
 
-            border: 7px solid #ff4d00;
+            border: 6px solid #07080b;
 
-            box-shadow:
-                0 0 0 15px rgba(255,77,0,0.08),
-                0 30px 80px rgba(0,0,0,0.5);
+            display: block;
         }
+
 
         /* SECTIONS */
 
         section {
-            padding: 110px 8%;
+            padding: 120px 8%;
         }
 
         .section-title {
-            font-size: clamp(40px, 6vw, 70px);
-            letter-spacing: -3px;
-            margin-bottom: 20px;
+            font-size: clamp(45px, 6vw, 75px);
+            letter-spacing: -4px;
+            line-height: 0.95;
+            margin-bottom: 25px;
         }
 
         .section-title span {
@@ -188,13 +260,18 @@
         }
 
         .intro {
-            color: #aaa;
-            max-width: 700px;
+            max-width: 720px;
+
+            color: #999ca3;
+
             font-size: 19px;
-            margin-bottom: 50px;
+            line-height: 1.7;
+
+            margin-bottom: 55px;
         }
 
-        /* ABOUT */
+
+        /* ÜBER MICH */
 
         .about {
             background: #0d0f14;
@@ -208,35 +285,49 @@
 
         .card {
             padding: 35px;
-            background: #14161c;
-            border: 1px solid #24262d;
-            border-radius: 20px;
 
-            transition: 0.3s;
+            background: #14171d;
+
+            border: 1px solid #252830;
+            border-radius: 22px;
+
+            transition: 0.35s;
         }
 
         .card:hover {
-            transform: translateY(-7px);
+            transform: translateY(-8px);
+
             border-color: #ff4d00;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.25);
         }
 
         .card-number {
-            font-size: 45px;
+            font-size: 48px;
             font-weight: 900;
+
             color: #ff4d00;
+
             margin-bottom: 10px;
         }
 
         .card h3 {
-            font-size: 25px;
-            margin-bottom: 10px;
+            font-size: 26px;
+            margin-bottom: 12px;
         }
 
         .card p {
-            color: #aaa;
+            color: #999ca3;
+            line-height: 1.7;
         }
 
+
         /* EVENTS */
+
+        .events {
+            background: #07080b;
+        }
 
         .event-list {
             display: grid;
@@ -245,67 +336,114 @@
         }
 
         .event {
-            padding: 35px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #15171d, #0d0f14);
-            border: 1px solid #272a32;
+            position: relative;
+            overflow: hidden;
+
+            padding: 40px;
+
+            min-height: 230px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #17191f,
+                    #0e1015
+                );
+
+            border: 1px solid #272a31;
+
+            transition: 0.35s;
+        }
+
+        .event:hover {
+            transform: translateY(-8px);
+            border-color: #ff4d00;
+        }
+
+        .event::after {
+            content: "🏃";
+
+            position: absolute;
+
+            right: 25px;
+            bottom: -15px;
+
+            font-size: 90px;
+
+            opacity: 0.06;
         }
 
         .event small {
             color: #ff4d00;
-            font-weight: bold;
-            text-transform: uppercase;
+
+            font-weight: 900;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .event h3 {
-            font-size: 30px;
-            margin-top: 10px;
+            font-size: 32px;
+
+            margin-top: 12px;
+            margin-bottom: 12px;
         }
 
         .event p {
-            color: #aaa;
-            margin-top: 10px;
+            color: #999ca3;
+            line-height: 1.7;
         }
 
-        /* CONTACT */
+
+        /* KONTAKT */
 
         .contact {
             text-align: center;
+
             background:
-                radial-gradient(circle at center, rgba(255,77,0,0.15), transparent 45%);
+                radial-gradient(
+                    circle at center,
+                    rgba(255,77,0,0.16),
+                    transparent 45%
+                );
         }
 
-        .contact p {
-            color: #aaa;
-            font-size: 20px;
-            max-width: 650px;
-            margin: 0 auto 35px;
+        .contact .intro {
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
+
             gap: 15px;
+
             flex-wrap: wrap;
         }
+
 
         /* FOOTER */
 
         footer {
-            padding: 30px 8%;
+            padding: 35px 8%;
+
             text-align: center;
-            border-top: 1px solid #222;
-            color: #666;
+
+            color: #686b72;
+
+            border-top: 1px solid #1d1f24;
         }
 
         footer strong {
             color: white;
         }
 
+
         /* MOBILE */
 
-        @media (max-width: 800px) {
+        @media (max-width: 850px) {
 
             nav {
                 padding: 18px 5%;
@@ -317,11 +455,17 @@
 
             .hero {
                 flex-direction: column-reverse;
+
                 text-align: center;
-                padding-top: 130px;
+
+                padding: 130px 6% 80px;
             }
 
-            .hero p {
+            .hero-text {
+                margin-top: 50px;
+            }
+
+            .hero-text > p {
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -331,12 +475,17 @@
             }
 
             .profile-container {
-                margin: 0 0 50px;
+                margin: 0;
+            }
+
+            .profile-ring {
+                width: 280px;
+                height: 280px;
             }
 
             .profile {
-                width: 240px;
-                height: 240px;
+                width: 260px;
+                height: 260px;
             }
 
             .about-grid,
@@ -344,18 +493,43 @@
                 grid-template-columns: 1fr;
             }
 
+            section {
+                padding: 90px 6%;
+            }
+
             h1 {
-                letter-spacing: -3px;
+                letter-spacing: -4px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .profile-ring {
+                width: 230px;
+                height: 230px;
+            }
+
+            .profile {
+                width: 215px;
+                height: 215px;
+            }
+
+            h1 {
+                font-size: 65px;
             }
         }
     </style>
 </head>
 
+
 <body>
+
 
     <!-- NAVIGATION -->
 
     <nav>
+
         <div class="logo">
             Onair<span>.</span>David
         </div>
@@ -365,6 +539,7 @@
             <a href="#events">Events</a>
             <a href="#kontakt">Kontakt</a>
         </div>
+
     </nav>
 
 
@@ -384,31 +559,45 @@
             </h1>
 
             <p>
-                Ich bin David – alias <strong>Onair.David</strong>.
+                Hey! Ich bin <strong>David</strong>, alias
+                <strong>Onair.David</strong>.
                 Ich moderiere Laufveranstaltungen und liebe es,
-                Menschen mit meiner Stimme, Energie und Begeisterung
-                mitzureißen.
+                mit meiner Stimme, Energie und Begeisterung
+                Menschen mitzureißen.
             </p>
 
             <div class="buttons">
+
                 <a href="#kontakt" class="button primary">
                     Kontakt aufnehmen
                 </a>
 
                 <a href="#events" class="button secondary">
-                    Meine Events
+                    Meine Events ↓
                 </a>
+
             </div>
 
         </div>
 
 
+        <!-- PROFILBILD
+             Die Datei muss "profil.jpg" heißen
+             und im gleichen Ordner wie index.html liegen.
+        -->
+
         <div class="profile-container">
-            <img
-                src="profil.png"
-                alt="David – Onair.David"
-                class="profile"
-            >
+
+            <div class="profile-ring">
+
+                <img
+                    src="./profil.jpg"
+                    alt="David – Onair.David"
+                    class="profile"
+                >
+
+            </div>
+
         </div>
 
     </header>
@@ -423,47 +612,76 @@
         </div>
 
         <h2 class="section-title">
-            Moderation ist meine <span>Leidenschaft.</span>
+            Moderation ist meine
+            <span>Leidenschaft.</span>
         </h2>
 
         <p class="intro">
-            Wenn Startschuss, Zieleinlauf und Emotionen zusammenkommen,
-            fühle ich mich zuhause. Ich liebe die Atmosphäre bei
-            Laufveranstaltungen und möchte genau diese Energie
-            an die Teilnehmer und Zuschauer weitergeben.
+            Wenn Startschuss, Zieleinlauf und Emotionen
+            zusammenkommen, fühle ich mich zuhause.
+            Ich liebe die Atmosphäre bei Laufveranstaltungen
+            und möchte genau diese Energie an Teilnehmer,
+            Zuschauer und Veranstalter weitergeben.
         </p>
 
 
         <div class="about-grid">
 
+
             <div class="card">
-                <div class="card-number">01</div>
-                <h3>Moderation</h3>
+
+                <div class="card-number">
+                    01
+                </div>
+
+                <h3>
+                    Moderation
+                </h3>
+
                 <p>
-                    Mit Stimme, Energie und guter Laune sorge ich
-                    für Stimmung auf und neben der Laufstrecke.
+                    Mit Stimme, Energie und guter Laune
+                    sorge ich für Stimmung auf und neben
+                    der Laufstrecke.
                 </p>
+
             </div>
 
 
             <div class="card">
-                <div class="card-number">02</div>
-                <h3>Running</h3>
+
+                <div class="card-number">
+                    02
+                </div>
+
+                <h3>
+                    Running
+                </h3>
+
                 <p>
-                    Laufveranstaltungen sind für mich mehr als nur
-                    Rennen – sie sind Emotion, Gemeinschaft und
-                    besondere Momente.
+                    Laufveranstaltungen sind für mich mehr
+                    als nur Rennen – sie sind Gemeinschaft,
+                    Emotionen und besondere Momente.
                 </p>
+
             </div>
 
 
             <div class="card">
-                <div class="card-number">03</div>
-                <h3>Leidenschaft</h3>
+
+                <div class="card-number">
+                    03
+                </div>
+
+                <h3>
+                    Leidenschaft
+                </h3>
+
                 <p>
-                    Ich liebe Moderation und freue mich über jede
-                    Veranstaltung, bei der ich Teil des Events sein darf.
+                    Ich liebe Moderation und freue mich
+                    über jede Veranstaltung, bei der ich
+                    Teil des Events sein darf.
                 </p>
+
             </div>
 
         </div>
@@ -473,42 +691,63 @@
 
     <!-- EVENTS -->
 
-    <section id="events">
+    <section class="events" id="events">
 
         <div class="eyebrow">
-            EVENTS
+            EVENT-HIGHLIGHTS
         </div>
 
         <h2 class="section-title">
-            Meine <span>Highlights.</span>
+            Wo ich bereits
+            <span>on air</span> war.
         </h2>
 
         <p class="intro">
-            Zwei Veranstaltungen, bei denen ich bereits als Moderator
-            dabei sein durfte.
+            Zu meinen bisherigen Highlights gehören
+            der Beueler 10er und der Siebengebirgsmarathon.
         </p>
 
 
         <div class="event-list">
 
+
             <div class="event">
-                <small>Highlight Event</small>
-                <h3>Beueler 10er</h3>
+
+                <small>
+                    Highlight
+                </small>
+
+                <h3>
+                    Beueler 10er
+                </h3>
+
                 <p>
-                    Ein großes Laufereignis mit viel Stimmung,
-                    schnellen Zeiten und jeder Menge Emotionen.
+                    Ein großes Laufevent mit jeder Menge
+                    Stimmung, sportlicher Energie und
+                    Emotionen.
                 </p>
+
             </div>
 
 
             <div class="event">
-                <small>Highlight Event</small>
-                <h3>Siebengebirgsmarathon</h3>
+
+                <small>
+                    Highlight
+                </small>
+
+                <h3>
+                    Siebengebirgsmarathon
+                </h3>
+
                 <p>
-                    Ein besonderes Laufevent im Siebengebirge,
-                    bei dem ich die Veranstaltung moderativ begleiten durfte.
+                    Ein besonderes Laufevent im
+                    Siebengebirge, das ich moderativ
+                    begleiten durfte.
                 </p>
+
             </div>
+
 
         </div>
 
@@ -524,17 +763,21 @@
         </div>
 
         <h2 class="section-title">
-            Lass uns <span>quatschen.</span>
+            Lass uns
+            <span>quatschen.</span>
         </h2>
 
-        <p>
-            Du planst eine Laufveranstaltung oder suchst jemanden,
-            der dein Event moderiert und für Stimmung sorgt?
+        <p class="intro">
+            Du planst eine Laufveranstaltung oder suchst
+            jemanden, der dein Event moderiert und für
+            Stimmung sorgt?
             Schreib mir gerne!
         </p>
 
 
         <div class="contact-links">
+
+            <!-- E-MAIL -->
 
             <a
                 href="mailto:davidonair@outlook.de"
@@ -543,13 +786,16 @@
                 ✉ E-Mail schreiben
             </a>
 
+
+            <!-- INSTAGRAM -->
+
             <a
-                href="https://www.instagram.com/onairdavid/"
+                href="https://www.instagram.com/onair.david/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="button secondary"
             >
-                ◎ @onairdavid
+                ◎ @onair.david
             </a>
 
         </div>
@@ -560,8 +806,14 @@
     <!-- FOOTER -->
 
     <footer>
-        © 2026 <strong>Onair.David</strong> · David · Moderation & Laufveranstaltungen
+
+        © 2026
+        <strong>Onair.David</strong>
+        · David · Moderation & Laufveranstaltungen
+
     </footer>
+
 
 </body>
 </html>
+```
